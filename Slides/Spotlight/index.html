@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600,700&display=swap" rel="stylesheet">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+      <style>
+        body{
+          background-color: black;
+          color: white;
+          font-family: 'Source Sans Pro', sans-serif;
+          font-size: 20pt;
+        }
+        .clouds{
+          position:fixed;
+          animation: slide 6s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+          animation-iteration-count: infinite;
+          z-index: 1;
+        }
+        .container{
+          padding: 10px;
+        }
+        .center {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .text{
+          position: fixed;
+          font-size: 1.5rem;
+          left:70%;
+          top:25%;
+          padding: 2%;
+        }
+        @keyframes slide {
+          0%{top: -2%;left:-4%;}
+          25%{top: -4%;left:-2%;}
+          50%{top: -3%;left:-3%;}
+          75%{top: -2%;left:-2%x;}
+          100%{top: -2%;left:-4%;}
+        }
+      </style>
+    </head>
+
+    <body>
+      <div class="clouds">
+        <img src="media/spotlight.png" width="30%">
+      </div>
+      <div class="container">
+        <img src="media/towers.png" width="40%" class="center">
+        <iframe width="750" height="473" id="vid" class="center" src="https://www.youtube.com/embed/NoPCVFCzj6Y?autoplay=1&controls=0&disablekb=1&fs=0&iv_load_policy=1&mute=1"frameborder="0"allow='autoplay'></iframe>
+        <div class="text">
+          <ul>
+            <li>Project Lead/Narrative: Tyler Gorman</li>
+            <li>Artists: Aaron Mills, Brendan Berg, Lydia Hallett</li>
+            <li>Programmers/Design: Matt Camerato, Horacio Valdes</li>
+            <p>The Defense of Trewel Towers, or Trewel Towers, is a VR tower defense game. The player embodies the Orna Kingdoms hero and defends the kingdom using their archery skills from atop a tower. The player follows the hero’s story, gaining magical abilities and upgrading the tower defenses in order to repel the invaders from another world.</p>
+          </ul>
+        </div>
+      </div>      
+    </body>
+    
+  <script>
+    videos = [
+      "a842yh45gIU",
+      "NoPCVFCzj6Y",
+      "OpQxGeVfloE",
+      "177nOOSh57E"
+    ]
+    r = Math.floor(Math.random() * videos.length)
+    t = 0
+    if(r > 1){
+      t = Math.floor(Math.random() * 1000)
+    }
+    document.getElementById('vid').src = `https://www.youtube.com/embed/${videos[r]}?t=${t}&autoplay=1&controls=0&disablekb=1&fs=0&iv_load_policy=1&mute=1` 
+  </script>
+
+</html>

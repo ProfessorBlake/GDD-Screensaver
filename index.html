@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible"content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+      <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600,700&display=swap" rel="stylesheet">
+      <style>
+        body{
+          background-color: black;
+        }
+        button{
+          display:auto;
+        }
+        .frameContainer{
+          position: absolute;
+          left: -2px;
+          right: 0;
+          top: -2px;
+          bottom: 0;
+          border: 0;
+          margin: 0;
+          padding: 2;
+          overflow: hidden;
+        }
+        .gddBanner{
+          position:fixed;
+          bottom:0%;
+          left: 0%;
+          right:0%;
+        }
+        .gddBannerText{
+          position:absolute;
+          bottom: 38%;
+          left: 9%;
+          right:50px;
+          color:black;
+          text-shadow: 1px 2px 4px white;
+          font-size: 2vw;
+          z-index: 1;
+          font-family: 'Source Sans Pro', sans-serif !important;
+        }
+      </style>
+    </head>
+
+    <body>
+      <div class="frameContainer">
+        <button onclick="begin()" id="goButton" style="width: 150px;height: 50px;">GO</button>
+        <iframe src="" id="frame" name="frame" width="100%"height="100%"></iframe>
+      </div>
+      
+      <!--GDD Banner-->
+      <div class="gddBanner">
+        <img src="media/gdd_banner.png" width="100%">
+        <div class="gddBannerText">
+          Finals week begins on December 12th!
+        </div>
+      </div>
+      <input type="text" onkeydown="cycleSlide()"> 
+    </body>
+
+    <script>
+      var slideIndex = 0;
+      var slideDelay = 30;
+      var slidesPath = "Slides/"
+      var slidesArr = [
+        "GDD",
+        "Upcoming",
+        "Spotlight"
+      ]
+
+      // Fullscreen button
+        var elem = document.documentElement;
+        var frame = document.getElementById("frame");
+        var frameContainer = document.getElementById("frameContainer");
+        function begin() {
+          if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+          }
+            document.getElementById('goButton').style.display = "none";
+            changeSlide();
+            setInterval(changeSlide, 1000 * slideDelay);
+        }
+      // Change slide
+        function changeSlide(){
+            var location = window.location.href;
+            var directoryPath = slidesPath + slidesArr[slideIndex] + "/index.html";
+            console.log(`Looking for slides in directory: ${directoryPath}`);
+            
+            $(frame).trigger('close', directoryPath);
+            
+            slideIndex += 1;
+            if(slideIndex >= slidesArr.length){
+              slideIndex = 0;
+            }
+        }
+
+        // Fade effect
+        $(document).on('close', function(event, path) {
+          $(frame).animate({
+            left: '250px',
+            opacity: '0.0'
+          },1000, function(){
+            frame.src = path;
+            $(frame).animate({
+              left: '250px',
+              opacity: '1.0'
+            },1000);
+          });
+        });
+
+      // Cycle manually
+      addEventListener('keydown', (event) => {changeSlide();});
+    </script>
+</html>
