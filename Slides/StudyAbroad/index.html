@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600,700&display=swap" rel="stylesheet">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+      <style>
+        body{
+          background-color: black;
+          color: white;
+          font-family: 'Source Sans Pro', sans-serif;
+        }
+        h1{
+          padding: 0;
+          margin: 0;
+          text-align: center;
+        }
+        h2{
+          padding: 0;
+          margin: 0;
+        }
+        h3{
+          padding: 0;
+          margin: 0;
+        }
+        ul{
+          list-style-type: none;
+          overflow: hidden;
+          padding:0px;
+          margin:0px;
+        }
+        li{
+          border: 1px solid cadetblue;
+          border-radius: 10px;
+          padding: 1%;
+          margin: 1%;
+          list-style: none;
+          float:left;
+          width:45%;
+        }
+      </style>
+    </head>
+
+    <body>
+      <h1>Study Abroad</h1>
+      <div class="container">
+        <ul id="list">
+
+        </ul>
+      </div>
+    </body>
+
+    <script>
+      var courses = [
+        {
+          name: "Advanced Game Design & Development - 3 Week Course", 
+          desc: "This course expands RU’s prior offerings in game design & development with more advanced topics in game and interaction design. Through lectures, lab exercises, and project work, students will learn and gain experience with a variety of game design topics. Working together in teams, students will design, develop, and critically analyze several smaller games, each focused on applying the concepts that are discussed in class. Each of these exercises will differ in terms of either the team’s composition, the game’s scope, or the constraints that the instructors provide to guide the creative process. Each student will also take on a different development role for each exercise. After the exercises are complete, students will form new teams and apply their new knowledge to a larger development project. Masters students will additionally complete a small research project related to the course topics.",
+          host: 'Reykjavik University',
+          session: 'Spring',
+          img: 'media/studyabroad_iceland1.jpg'
+        },
+        {
+          name: "Game Engine Architectecture", 
+          desc: "The course covers the theory and practice of game engine software development, bringing together topics that range from large-scale software architectures and modern game programming paradigms to the design and implementation of subsystems for rendering, resource management, user interfaces, sound, collision, physics, and animation. Through practical lab exercises and group projects, the students will get technical hands-on experience in C++ game development, including the use and development of supporting tool pipelines.",
+          host: 'Reykjavik University',
+          session: 'Spring',
+          img: 'media/studyabroad_iceland2.jpg'
+        }
+      ]
+
+      var list = document.getElementById('list');
+
+      function updateEvent(){
+        for(var i = 0; i < courses.length; i++){
+            list.innerHTML += `<li><h2>${courses[i].name}</h2><br><h3>${courses[i].desc}<br>
+              <img src="${courses[i].img}" width="30%" style="float:right;">
+              <h4>${courses[i].session} - ${courses[i].host}</h3>
+              </li>`
+        }
+      }
+
+      updateEvent();
+    </script>
+    
+</html>
