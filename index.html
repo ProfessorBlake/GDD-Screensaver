@@ -43,10 +43,9 @@
         }
       </style>
     </head>
-
+    
     <body>
       <div class="frameContainer">
-        <button onclick="begin()" id="goButton" style="width: 150px;height: 50px;">GO</button>
         <iframe src="" id="frame" name="frame" width="100%"height="100%"></iframe>
       </div>
       
@@ -57,11 +56,11 @@
           Finals week begins on December 12th!
         </div>
       </div>
-      <input type="text" onkeydown="cycleSlide()"> 
+      <input type="text" style="display:none;" onkeydown="cycleSlide()"> 
     </body>
 
     <script>
-      var slideIndex = 3;
+      var slideIndex = 0;
       var slideDelay = 30;
       var slidesPath = "Slides/"
       var slidesArr = [
@@ -76,10 +75,6 @@
         var frame = document.getElementById("frame");
         var frameContainer = document.getElementById("frameContainer");
         function begin() {
-          if (elem.requestFullscreen) {
-            elem.requestFullscreen();
-          }
-            document.getElementById('goButton').style.display = "none";
             changeSlide();
             setInterval(changeSlide, 1000 * slideDelay);
         }
@@ -113,5 +108,8 @@
 
       // Cycle manually
       addEventListener('keydown', (event) => {changeSlide();});
+
+      begin();
+
     </script>
 </html>
