@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600,700&family=Noto+Sans+Buhid:600&family=Gloock:600&display=swap" rel="stylesheet">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+      <style>
+        body{
+          color: white;
+          font-family: 'Source Sans Pro', sans-serif;
+          font-size: 20pt;
+          overflow: hidden;
+        }
+        .bg{
+          position: absolute;
+          left: 0px;
+          top: 0px;
+          background-image: url("./media/gddbg.png");
+          background-repeat: repeat;
+          width:3000px;
+          height:1000px;
+          animation: bgmove 60s;
+          animation-iteration-count: infinite;
+        }
+        .clouds{
+          position:fixed;
+          animation: slide 6s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+          animation-iteration-count: infinite;
+          z-index: 1;
+        }
+        .container{
+          padding: 10px;
+          overflow: hidden;
+        }
+        .center {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .text{
+          position: fixed;
+          font-size: 1.5rem;
+          left:60%;
+          top:15%;
+          padding: 2%;
+          font-family:Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .title{
+          font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif ;
+          font-size: 40pt;
+          position: absolute;
+          left:40%;
+        }
+        @keyframes slide {
+          0%{top: -2%;left:-4%;}
+          25%{top: -4%;left:-2%;}
+          50%{top: -3%;left:-3%;}
+          75%{top: -2%;left:-2%x;}
+          100%{top: -2%;left:-4%;}
+        }
+        @keyframes bgmove {
+        0% {
+          transform: translate3d(0, 0, 0);
+        }
+        100% {
+          transform: translate3d(-1000px, -300px, 0);
+        }
+}
+      </style>
+    </head>
+
+    <body>
+      
+      <div class="clouds">
+        <img src="media/spotlight.png" width="30%">
+      </div>
+      <div class="container">
+        <div class="bg"></div>
+        <div id="title">
+
+        </div>
+        <iframe width="750" height="473" id="vid" style="position: absolute;padding:5%;left:8%;top:10%;" src="https://www.youtube.com/embed/NoPCVFCzj6Y?autoplay=1&controls=0&disablekb=1&fs=0&iv_load_policy=1&mute=1"frameborder="0"allow='autoplay'></iframe>
+        <div class="text">
+          <ul id="info">
+          </ul>
+        </div>
+      </div>    
+    </body>
+    
+  <script>
+    class Project {
+      constructor(vid, name, desc){
+        this.vidUrl = vid;
+        this.name = name;
+        this.desc = desc;
+      }
+    }
+
+    var projects = [];
+
+    projects.push(new Project(
+      "Lj80RD2CS6Y",
+      "Project: Action Party",
+      "Jump from roof to roof collecting weapons and dodging bullets in this parkour-based local multiplayer party game for two to four players. Created by Matt and Kathy Diaz."
+      ));
+    projects.push(new Project(
+      "Z-Tf5psBIZU",
+      "TimeTekker",
+      "TimeTekker is a top-down shooter with a twist: the faster you move, the faster time passes. TimeTekker won the Best Use of Time award at GameFest (2017), the Best Gameplay Award at New England Student Game Design Showcase (2018), and a Golden Joystick award at the Terminus Conference and Festival (2018). Available on Steam. Created by Ryan O'Hara."
+      ));
+    projects.push(new Project(
+      "pfDhYMT5vVE",
+      "Rookfall",
+      "Rookfall is a deceptively challenging puzzle game where the player must move a rook across a chessboard to clear tiles. Created by Michael Bunger and Ron Burgess. Available for Android devices."
+      ));
+    projects.push(new Project(
+      "mueRSHhD79Y",
+      "Saving Time",
+      "Quinn Bennet moves back into their grandparents' house after their passing, and while unpacking/going through some of their grandparents' things, they find a magical pocket watch that transports them 20 years into the future. This game was initially created by Matthew Merritt, Michael Merritt, Hannah Moss, Sarah Holmes, and Amari O'Connor for the 2022 Global Game Jam. The game was later continued by Matthew Merritt, Michael Merritt, Hannah Moss, and Amari O'Connor."
+      ));
+    projects.push(new Project(
+      "jW8XbuTvsD4",
+      "Room Decorator",
+      "Room Decorator is a casual 3D puzzle game with sandbox elements where the player can take on client requests to create specific rooms. The player will be able to select furniture, paint the room and furniture, and place the furniture into the room as they see fit. This game was created by Matthew Merritt, Michael Merritt, Hannah Moss, and Yadel Negash. "
+      ));
+
+    r = Math.floor(Math.random() * projects.length);
+    document.getElementById('vid').src = `https://www.youtube.com/embed/${projects[r].vidUrl}?t=${0 }&autoplay=1&controls=0&disablekb=1&fs=0&iv_load_policy=1&mute=1` 
+    title.innerHTML = `<span class='title'>${projects[r].name}</span>`
+    info.innerHTML += `${projects[r].desc}`;
+  </script>
+
+</html>
