@@ -10,21 +10,23 @@
           font-family: 'Source Sans Pro', sans-serif;
         }
         h1{
+          color:#c99e13;
           text-align: center;
           font-size: 2rem;
         }
         h2{
+          color:#7ca7da;
           font-size: 1.25rem;
-          margin: 0.75rem;
+          margin: 0.25rem;
         }
         h3{
           font-size: 1rem;
-          margin: 0.75rem;
+          margin: 0.25rem;
         }
         .container{
           position: fixed;
-          left:20%;
-          width:55%;
+          left:10%;
+          width:80%;
         }
         ul{
           list-style: none;
@@ -33,6 +35,7 @@
           padding: 1%;
           font-size: 2.5rem;
           min-height: 7%;
+          
         }
         .liOld{
           padding:1%;
@@ -45,13 +48,14 @@
           border-left: 50px solid slateblue;
           border-top: 1px solid lightgray;
           line-height: 100%;
+          animation: slidein 0.5s;
         }
         .listBorderOld{
           padding: 1%;
           margin: 2%;
           border-left: 50px solid rgb(18, 16, 16);
           border-top: 1px solid lightgray;
-          line-height: 100%;
+          line-height: 100%; 
         }
         s{
           color:darkred;
@@ -60,12 +64,11 @@
         }
         .date{
           position: absolute;
-          writing-mode: vertical-rl;
-          font-size: 1rem;
+          font-size: 1.25rem;
           left:65px;
           text-align: center;
-          color:aquamarine;
-          font-style: bold;
+          color:rgb(253, 255, 127);
+          font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
           letter-spacing: 5px;
         }
         .dateOld{
@@ -74,13 +77,17 @@
           font-size: 1rem;
           left:65px;
           text-align: center;
-          color:red;
-          
+          color:#ff0000;
         }
         @keyframes slide {
           from{opacity: 0%;}
           to{opacity: 100%;}
         }
+        @keyframes slidein {
+          from {margin-left: -20%;opacity: 0%; }
+          to {margin-left: 1%; opacity: 100%;}
+        }
+
       </style>
     </head>
 
@@ -96,33 +103,52 @@
     <script>
       var events = [
         {
-          name: "PAX East", 
+          name: "Add/Drop Ends", 
+          desc: "Add/drop registration period ends for undergraduate and graduate 15-week courses.",
+          date: '9/1/23',
+          qu: true
+        },
+        {
+          name: "Nintendo Live", 
+          desc: "Nintendo is bringing its previously Japan-only live fan event to the West for the first time in 2023, with the event planned to have a large, themed area for family-friendly activities. Previous events have featured themed concerts, game tournaments, and other activities to celebrate the company’s various properties. ",
+          date: '9/1/23',
+          qu: false
+        },
+        {
+          name: "PAX West", 
+          desc: "The West Coast version of PAX returns in 2023, featuring all the things you can typically expect from the conference. There’ll be hands-on sessions with upcoming video games, panels with developers and gaming personalities, and areas dedicated to tabletop and free play.",
+          date: '9/1/23',
+          qu: false
+        },
+        {
+          name: "Unreal Fest", 
+          desc: "Taking place in New Orleans from October 3 to 5, 2023, this year’s event is shaping up to be our biggest and most exciting yet.",
+          date: '10/3/23',
+          qu: false
+        },
+        {
+          name: "Steam Next Fest", 
+          desc: "A multi-day celebration of upcoming games. Explore and play hundreds of game demos, watch developer livestreams, and chat with teams about their games in progress, coming soon to Steam.",
+          date: '10/9/23',
+          qu: false
+        },
+        {
+          name: "GDC - San Francisco", 
+          desc: "The Game Developers Conference (GDC) brings the game development community together to exchange ideas, solve problems, and shape the future of the industry across five days of education, inspiration, and networking.",
+          date: '3/20/24',
+          qu: false
+        },
+        {
+          name: "PAX East - Boston", 
           desc: "PAX East is a celebration of gaming and gaming culture featuring thought-provoking panels, a massive expo hall filled with the best publishers and studios, new game demos, musical performances, tournaments, and a community experience unlike any other.",
-          date: '2/23/23'
+          date: '3/23/24',
+          qu: false
         },
-        {
-          name: "GDC - Game Developers Conference", 
-          desc: "The Game Developers Conference (GDC) brings the game development community together to exchange ideas, solve problems, and shape the future of the industry across five days of education, inspiration, and networking. Attendees include programmers, artists, producers, game designers, audio professionals, and business leaders.",
-          date: '3/20/23'
-        },
-        {
-          name: "PAX & GDC Discussion", 
-          desc: "5:15PM - Hear from the team behind Trewel Towers and their experience running a booth at PAX East. Professor Bertozzi and Amari O’Conner will discuss their experience at the Game Developers Conference. ",
-          date: '4/6/23'
-        },
-        {
-          name: "RPI Gamefest", 
-          desc: "12:00PM - 8:00PM - GameFest is an annual celebration of student creativity and innovation in the broader fields of analog and digital game design. The two-day event takes the form of a game development showcase, symposium, and competition with prizes awarded by a panel of local industry experts.",
-          date: '4/29/23'
-        },
-        {
-          name: "GDD Showcase", 
-          desc: "Show off your game (and get valuable feedback!) from Quinnipiac students and faculty, and likely a few local game company owners/employees. Win prize money, get feedback, meet potential employers!",
-          date: '5/4/23'
-        }
       ]
 
       var list = document.getElementById('list');
+      var cols = [ "#392fbb", "#c99e13","white", "#6da2e9"];
+      var show = 0; // Control which events are shown per scroll
 
       events.sort(function compare(a, b) {
         var dateA = new Date(a.date);
@@ -131,18 +157,37 @@
       });
 
       function updateEvent(){
-        for(var i = 0; i < events.length; i++){
+        var cnt = 0;
+        list.innerHTML = "";
+        if(show >= events.length)
+          show = 0;
+
+        for(var i = show; i < events.length; i++){
+          if(show >= events.length || i >= events.length){
+            show = 0;
+            return;
+          }
+            console.log(i);
           if(Date.now() > new Date(events[i].date)){
-            list.innerHTML += `<div class="listBorderOld"><li class="liOld"><div class="dateOld">${events[i].date}</div><s><h2>${events[i].name}</h2></s></li></div>`
+            //list.innerHTML += `<div class="listBorder"><li><h2>${events[i].date} - ${events[i].name}</h2><br><h3>${events[i].desc}</h3></font></li></div>`
           }
           else{
-            list.innerHTML += `<div class="listBorder"><li><div class="date" >${events[i].date}</div><h2>${events[i].name}</h2><br><h3>${events[i].desc}</h3></font></li></div>`
+            addImg = "";
+            if(events[i].qu){
+              addImg = '<img src="https://games.qu.edu/images/logos/gdd-logo-animated-transparent-2.svg"width="100px">';
+            }
+            list.innerHTML += `<div class="listBorder"style="border-left: 50px solid ${cols[cnt]};animation: slidein ${0.25+(cnt*0.5)}s;"><li>${addImg}<h2>${events[i].date} - ${events[i].name}</h2><br><h3>${events[i].desc}</h3></font></li></div>`
+            cnt++;
+            show += 1;
           }
-          
+          if(cnt >= 4)
+            break;
         }
       }
 
       updateEvent();
+
+      setInterval(updateEvent, 8000);
     </script>
     
 </html>
