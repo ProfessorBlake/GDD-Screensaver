@@ -16,10 +16,11 @@
           top: 0px;
           background-image: url("./media/gddbg.png");
           background-repeat: repeat;
-          width:3000px;
-          height:1000px;
+          width:4000px;
+          height:2000px;
           animation: bgmove 60s;
           animation-iteration-count: infinite;
+          scale: 2;
         }
         .clouds{
           position:fixed;
@@ -59,7 +60,7 @@
         }
         @keyframes bgmove {
         0% {
-          transform: translate3d(0, 0, 0);
+          transform: translate3d(1000, 100, 0);
         }
         100% {
           transform: translate3d(-1000px, -100px, 0);
@@ -78,7 +79,7 @@
         <div id="title">
 
         </div>
-        <iframe width="853" height="505" id="vid" style="position: absolute;padding:5%;left:8%;top:10%;" src="https://www.youtube.com/embed/NoPCVFCzj6Y?autoplay=1&controls=0&disablekb=1&fs=0&iv_load_policy=1&mute=1"frameborder="0"allow='autoplay'></iframe>
+        <iframe width="853" height="505" id="vid" style="position: absolute;padding:5%;left:8%;top:10%;border: 2px solid black; border-radius: 40px;" src="https://www.youtube.com/embed/NoPCVFCzj6Y?autoplay=1&controls=0&disablekb=1&fs=0&iv_load_policy=1&mute=1"frameborder="0"allow='autoplay'></iframe>
         <div class="text">
           <ul id="info">
           </ul>
@@ -88,10 +89,11 @@
     
   <script>
     class Project {
-      constructor(vid, name, desc){
+      constructor(vid, name, desc, t){
         this.vidUrl = vid;
         this.name = name;
         this.desc = desc;
+        this.time = t;
       }
     }
 
@@ -100,46 +102,66 @@
     projects.push(new Project(
       "Lj80RD2CS6Y",
       "Project: Action Party",
-      "Jump from roof to roof collecting weapons and dodging bullets in this parkour-based local multiplayer party game for two to four players. Created by Matt and Kathy Diaz."
+      "Jump from roof to roof collecting weapons and dodging bullets in this parkour-based local multiplayer party game for two to four players. Created by Matt and Kathy Diaz.",
+      0
       ));
     projects.push(new Project(
       "Z-Tf5psBIZU",
       "TimeTekker",
-      "TimeTekker is a top-down shooter with a twist: the faster you move, the faster time passes. TimeTekker won the Best Use of Time award at GameFest (2017), the Best Gameplay Award at New England Student Game Design Showcase (2018), and a Golden Joystick award at the Terminus Conference and Festival (2018). Available on Steam. Created by Ryan O'Hara."
+      "TimeTekker is a top-down shooter with a twist: the faster you move, the faster time passes. TimeTekker won the Best Use of Time award at GameFest (2017), the Best Gameplay Award at New England Student Game Design Showcase (2018), and a Golden Joystick award at the Terminus Conference and Festival (2018). Available on Steam. Created by Ryan O'Hara.",
+      0
       ));
     projects.push(new Project(
       "pfDhYMT5vVE",
       "Rookfall",
-      "Rookfall is a deceptively challenging puzzle game where the player must move a rook across a chessboard to clear tiles. Created by Michael Bunger and Ron Burgess. Available for Android devices."
+      "Rookfall is a deceptively challenging puzzle game where the player must move a rook across a chessboard to clear tiles. Created by Michael Bunger and Ron Burgess. Available for Android devices.",
+      0
       ));
     projects.push(new Project(
       "mueRSHhD79Y",
       "Saving Time",
-      "Quinn Bennet moves back into their grandparents' house after their passing, and while unpacking/going through some of their grandparents' things, they find a magical pocket watch that transports them 20 years into the future. This game was initially created by Matthew Merritt, Michael Merritt, Hannah Moss, Sarah Holmes, and Amari O'Connor for the 2022 Global Game Jam. The game was later continued by Matthew Merritt, Michael Merritt, Hannah Moss, and Amari O'Connor."
+      "Quinn Bennet moves back into their grandparents' house after their passing, and while unpacking/going through some of their grandparents' things, they find a magical pocket watch that transports them 20 years into the future. This game was initially created by Matthew Merritt, Michael Merritt, Hannah Moss, Sarah Holmes, and Amari O'Connor for the 2022 Global Game Jam. The game was later continued by Matthew Merritt, Michael Merritt, Hannah Moss, and Amari O'Connor.",
+      0
       ));
     projects.push(new Project(
       "jW8XbuTvsD4",
       "Room Decorator",
-      "Room Decorator is a casual 3D puzzle game with sandbox elements where the player can take on client requests to create specific rooms. The player will be able to select furniture, paint the room and furniture, and place the furniture into the room as they see fit. This game was created by Matthew Merritt, Michael Merritt, Hannah Moss, and Yadel Negash. "
+      "Room Decorator is a casual 3D puzzle game with sandbox elements where the player can take on client requests to create specific rooms. The player will be able to select furniture, paint the room and furniture, and place the furniture into the room as they see fit. This game was created by Matthew Merritt, Michael Merritt, Hannah Moss, and Yadel Negash. ",
+      0
       ));
     projects.push(new Project(
       "Ab2HP6oIupg",
       "Trewel Towers",
-      "A narrative-based tower defense archery game for VR headsets. Winner of the Best Overall Game prize in Quinnipiac University's 2022 Game Design and Development Showcase.Created in Quinnipiac University's Game Design and Development program by Horacio Valdez, Matt Camerato, Tyler Gorman, and Brendan Berg."
+      "A narrative-based tower defense archery game for VR headsets. Winner of the Best Overall Game prize in Quinnipiac University's 2022 Game Design and Development Showcase.Created in Quinnipiac University's Game Design and Development program by Horacio Valdez, Matt Camerato, Tyler Gorman, and Brendan Berg.",
+      0
       ));
     projects.push(new Project(
       "6_MgvUnLc_o",
       "The Grey",
-      "A stylish first-person platformer where you must rocket from island to island to explore a mysterious world and gain abilities. Winner of the Best Visual Design prize in Quinnipiac University's 2022 Game Design and Development Showcase. Created in Quinnipiac University's Game Design and Development program by Danny Christie, Mario Egocheaga, Drew Malabre, Ethan Reyes, Tristan Reyes, and Callum Scott."
+      "A stylish first-person platformer where you must rocket from island to island to explore a mysterious world and gain abilities. Winner of the Best Visual Design prize in Quinnipiac University's 2022 Game Design and Development Showcase. Created in Quinnipiac University's Game Design and Development program by Danny Christie, Mario Egocheaga, Drew Malabre, Ethan Reyes, Tristan Reyes, and Callum Scott.",
+      0
       ));
     projects.push(new Project(
       "q-DUivn0s70",
       "Crumbling Catacombs",
-      "A 2d hack-n-slash rogue-like dungeon crawler. Winner of the Best Up and Coming Undergrad Game prize in Quinnipiac University's 2021 Game Design and Development Showcase. Created in Quinnipiac University's Game Design and Development program by Matt Camerato, Danny Christie, and Tristan Reyes."));
-      
+      "A 2d hack-n-slash rogue-like dungeon crawler. Winner of the Best Up and Coming Undergrad Game prize in Quinnipiac University's 2021 Game Design and Development Showcase. Created in Quinnipiac University's Game Design and Development program by Matt Camerato, Danny Christie, and Tristan Reyes."
+      ,0
+      ));
+    projects.push(new Project(
+      "sbUqRx92xkE",
+      "M.A.C.C.S.",
+      "VR survival game where the player must escape a decrepit cargo vessel in deep space while being hunted by an unseen threat. However, the player is not alone in this endeavor, as the ship's onboard AI is ready to lend a hand. Using voice recognition, give commands to the AI and navigate your way to safety. Created in Quinnipiac University's Game Design and Development program by Matt Gumprecht.",
+      15
+      ));
+    projects.push(new Project(
+      "KkAjlFRzYjs",
+      "Dance Dance Domination",
+      "Take an arcade-style side-scrolling beat-em-up game and mix it with a dance pad as the controller, and you’ve got Dance Dance Domination! Join Zeke’s journey on the fight for recognition for his own music genre, while beating up anyone that disagrees with his musical ideas. Created in Quinnipiac University's Game Design and Development program by Mario Egocheaga, Skye McCashion, and Jenna Saleh.",
+      0
+      ));
 
     r = Math.floor(Math.random() * projects.length);
-    document.getElementById('vid').src = `https://www.youtube.com/embed/${projects[r].vidUrl}?t=${0 }&autoplay=1&controls=0&disablekb=1&fs=0&iv_load_policy=1&mute=1` 
+    document.getElementById('vid').src = `https://www.youtube.com/embed/${projects[r].vidUrl}?t=${projects[r].time}&autoplay=1&controls=0&disablekb=1&fs=0&iv_load_policy=1&mute=1` 
     title.innerHTML = `<span class='title'>${projects[r].name}</span>`
     info.innerHTML += `${projects[r].desc}`;
   </script>
